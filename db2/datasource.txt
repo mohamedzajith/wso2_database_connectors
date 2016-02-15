@@ -1,0 +1,31 @@
+This is sample datasource configuration for IBM DB2 database when connecting to WSO2 products. 
+
+
+	<datasource>
+		<name>WSO2_CARBON_DB</name>
+		<description>The datasource used for registry and user manager</description>
+		<jndiConfig>
+			<name>jdbc/WSO2CarbonDB</name>
+		</jndiConfig>
+		<definition type="RDBMS">
+			<configuration>
+				<url>jdbc:db2://localhost:50000/wso2</url>
+				<username>dasusr2</username>
+				<password>admin@WSO2</password>
+				<driverClassName>com.ibm.db2.jcc.DB2Driver</driverClassName>
+				<maxActive>50</maxActive>
+				<maxWait>60000</maxWait>
+				<testOnBorrow>true</testOnBorrow>
+				<validationQuery>SELECT 1</validationQuery>
+				<validationInterval>30000</validationInterval>
+			</configuration>
+		</definition>
+	</datasource>
+
+
+
+Here the connection url has the pattern "jdbc:db2://<hostname>:<port>/<database_name>
+For username and password fields, you need to put the database instance user credentials. 
+
+You also need the JDBC driver (i.e db2jcc4.jar) for DB2 copied to the <WSO2_SERVER>/repository/components/lib directory.
+
